@@ -1,0 +1,22 @@
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.red {
+  background-color: red;
+}
+
+
+button {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: black;
+}
+
+#gamemanger {
+  margin: 0 auto;
+}
