@@ -11,6 +11,7 @@ import { AddplayerComponent } from './teammanager/players/addplayer/addplayer.co
 import { ListplayersComponent } from './teammanager/players/listplayers/listplayers.component';
 import { PlayersService } from './teammanager/services/team/players.service';
 import { HttpClient } from 'selenium-webdriver/http';
+import { TitleizePipe } from './titleize.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClient } from 'selenium-webdriver/http';
     TeammanagerComponent,
     GameComponent,
     AddplayerComponent,
-    ListplayersComponent
+    ListplayersComponent,
+    TitleizePipe
   ],
   imports: [
     BrowserModule,

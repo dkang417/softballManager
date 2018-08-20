@@ -9,8 +9,8 @@
 
     <h5 *ngIf="players.length <= 0">Please add a player</h5>
 
-    <table *ngIf="players.length > 0">
-      <thead>
+    <table *ngIf="players.length > 0" class="table table-hover">
+      <thead class="thead">
         <tr>
           <th>Name</th>
           <th>Actions</th>
@@ -19,7 +19,7 @@
 
       <tbody>
         <tr *ngFor="let player of players">
-          <td>{{ player.name }}</td>
+          <td>{{ player.name | titleize }}</td>
           <td>
             <div>
               <button (click)='onClick(player, "p")' class="btn" [ngClass]="{'green': player.games[game].status === 'p'}">Playing</button>

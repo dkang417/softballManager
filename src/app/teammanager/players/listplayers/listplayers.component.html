@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container top">
 
 
   <!-- <p>(from listplayers component)</p> -->
   <h5 *ngIf="players.length <= 0">Please add a player </h5>
 
-  <table *ngIf="players.length > 0">
+  <table *ngIf="players.length > 0" class="table table-hover">
 
-    <thead>
+    <thead class="thead">
       <tr>
         <th>Name</th>
         <th>Position</th>
@@ -16,10 +16,10 @@
 
     <tbody>
       <tr *ngFor="let player of players">
-        <td class="col-2">{{ player.name }}</td>
-        <td class="col-2">{{ player.position }}</td>
+        <td class="col-2">{{ player.name | titleize}}</td>
+        <td class="col-2">{{ player.position | titleize}}</td>
         <td class="col-2">
-          <button type="button" (click)="deletePlayer(player)">Delete</button>
+          <button class="btn btn-danger" type="button" (click)="deletePlayer(player)">Delete</button>
         </td>
       </tr>
     </tbody>

@@ -108,7 +108,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#main {\n  margin-top: 20px;\n  padding-top: 20px;\n}\na {\n  color: white;\n}\n"
+module.exports = "#main {\n  margin-top: 20px;\n  padding-top: 20px;\n}\na {\n  color: white;\n  margin-left: 20px;\n}\n"
 
 /***/ }),
 
@@ -119,7 +119,7 @@ module.exports = "#main {\n  margin-top: 20px;\n  padding-top: 20px;\n}\na {\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Softball Tournament</h1>\n  <!-- <p>(From app component root)</p> -->\n  <nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item\">\n        <a [routerLink]=\"['players']\" routerLinkActive=\"active\"> Manage Players </a> |\n      </li>\n    </ul>\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item\">\n        <a [routerLink]=\"['games']\" routerLinkActive=\"active\"> Manage Player Status </a>\n      </li>\n    </ul>\n\n\n  </nav>\n  <router-outlet></router-outlet>\n</div>\n"
+module.exports = "<div class=\"jumbotron jumbotron-fluid\">\n  <div class=\"container\">\n    <h1 class=\"display-4\">Softball Team</h1>\n    <p class=\"lead\">Manage your mediocre softball team!</p>\n  </div>\n</div>\n<div class=\"container\">\n\n  <!-- <p>(From app component root)</p> -->\n  <nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item\">\n        <a [routerLink]=\"['players']\" routerLinkActive=\"active\"> Manage Players </a>\n      </li>\n    </ul>\n    <ul class=\"navbar-nav\">\n      <li class=\"nav-item\">\n        <a [routerLink]=\"['games']\" routerLinkActive=\"active\"> Manage Player Status </a>\n      </li>\n    </ul>\n\n\n  </nav>\n  <router-outlet></router-outlet>\n</div>\n"
 
 /***/ }),
 
@@ -180,12 +180,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _teammanager_players_addplayer_addplayer_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./teammanager/players/addplayer/addplayer.component */ "./src/app/teammanager/players/addplayer/addplayer.component.ts");
 /* harmony import */ var _teammanager_players_listplayers_listplayers_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./teammanager/players/listplayers/listplayers.component */ "./src/app/teammanager/players/listplayers/listplayers.component.ts");
 /* harmony import */ var _teammanager_services_team_players_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./teammanager/services/team/players.service */ "./src/app/teammanager/services/team/players.service.ts");
+/* harmony import */ var _titleize_pipe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./titleize.pipe */ "./src/app/titleize.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -207,7 +209,8 @@ var AppModule = /** @class */ (function () {
                 _teammanager_teammanager_component__WEBPACK_IMPORTED_MODULE_6__["TeammanagerComponent"],
                 _teammanager_games_game_game_component__WEBPACK_IMPORTED_MODULE_7__["GameComponent"],
                 _teammanager_players_addplayer_addplayer_component__WEBPACK_IMPORTED_MODULE_8__["AddplayerComponent"],
-                _teammanager_players_listplayers_listplayers_component__WEBPACK_IMPORTED_MODULE_9__["ListplayersComponent"]
+                _teammanager_players_listplayers_listplayers_component__WEBPACK_IMPORTED_MODULE_9__["ListplayersComponent"],
+                _titleize_pipe__WEBPACK_IMPORTED_MODULE_11__["TitleizePipe"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -244,7 +247,7 @@ module.exports = ".green {\n  background-color: green;\n}\n\n.yellow {\n  backgr
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"gamemanager\">\n\n  <!-- <p>From game component</p> -->\n  <h1> Player Status </h1>\n  <div>\n    <a [routerLink]=\"['../../games', '1']\">Game 1</a> |\n    <a [routerLink]=\"['../../games', '2']\">Game 2</a> |\n    <a [routerLink]=\"['../../games', '3']\">Game 3</a>\n\n    <h5 *ngIf=\"players.length <= 0\">Please add a player</h5>\n\n    <table *ngIf=\"players.length > 0\">\n      <thead>\n        <tr>\n          <th>Name</th>\n          <th>Actions</th>\n        </tr>\n      </thead>\n\n      <tbody>\n        <tr *ngFor=\"let player of players\">\n          <td>{{ player.name }}</td>\n          <td>\n            <div>\n              <button (click)='onClick(player, \"p\")' class=\"btn\" [ngClass]=\"{'green': player.games[game].status === 'p'}\">Playing</button>\n              <button (click)='onClick(player, \"n\")' class=\"btn\" [ngClass]=\"{'red': player.games[game].status === 'n'}\">Not Playing</button>\n              <button (click)='onClick(player, \"u\")' class=\"btn\" [ngClass]=\"{'yellow': player.games[game].status === 'u'}\">Undecided</button>\n            </div>\n          </td>\n        </tr>\n    </table>\n  </div>\n\n</div>\n"
+module.exports = "<div id=\"gamemanager\">\n\n  <!-- <p>From game component</p> -->\n  <h1> Player Status </h1>\n  <div>\n    <a [routerLink]=\"['../../games', '1']\">Game 1</a> |\n    <a [routerLink]=\"['../../games', '2']\">Game 2</a> |\n    <a [routerLink]=\"['../../games', '3']\">Game 3</a>\n\n    <h5 *ngIf=\"players.length <= 0\">Please add a player</h5>\n\n    <table *ngIf=\"players.length > 0\" class=\"table table-hover\">\n      <thead class=\"thead\">\n        <tr>\n          <th>Name</th>\n          <th>Actions</th>\n        </tr>\n      </thead>\n\n      <tbody>\n        <tr *ngFor=\"let player of players\">\n          <td>{{ player.name | titleize }}</td>\n          <td>\n            <div>\n              <button (click)='onClick(player, \"p\")' class=\"btn\" [ngClass]=\"{'green': player.games[game].status === 'p'}\">Playing</button>\n              <button (click)='onClick(player, \"n\")' class=\"btn\" [ngClass]=\"{'red': player.games[game].status === 'n'}\">Not Playing</button>\n              <button (click)='onClick(player, \"u\")' class=\"btn\" [ngClass]=\"{'yellow': player.games[game].status === 'u'}\">Undecided</button>\n            </div>\n          </td>\n        </tr>\n    </table>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -357,7 +360,7 @@ var component = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".warning {\n  color: red;\n}\n\n"
+module.exports = ".warning {\n  color: red;\n}\n\nbutton {\n  margin-top: 10px;\n}\n\n.name {\n  margin-bottom: 10px;\n}\n"
 
 /***/ }),
 
@@ -368,7 +371,7 @@ module.exports = ".warning {\n  color: red;\n}\n\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"addmanager\">\n  <!-- <p>(from add player component)</p> -->\n\n  <div class=\"col\">\n    <h4>Add Player</h4>\n    <form (submit)=\"onSubmit($event)\" #form=\"ngForm\">\n      <div>\n        <label for=\"name\">Player Name</label>\n        <input type=\"text\" name=\"name\" class=\"form-control\" [(ngModel)]=\"name\" #playerName=\"ngModel\" minlength=\"3\" required>\n        <div class=\"warning\" *ngIf=\"playerName.dirty && !playerName.valid\">** Name must be longer than 2 characters</div>\n      </div>\n\n      <div>\n        <label for=\"position\">Preferred Position</label>\n        <select name=\"position\" [(ngModel)]=\"position\" #playerPosition=\"ngModel\" required>\n          <option value=\"\"></option>\n          <option *ngFor=\"let position of positions\" value=\"{{ position | lowercase }}\">{{ position }}</option>\n        </select>\n        <div class=\"warning\" *ngIf=\"playerPosition.dirty && !playerPosition.valid\"> ** Please choose a position</div>\n      </div>\n\n      <button type=\"submit\" [disabled]=\"form.invalid\">Add Player</button>\n    </form>\n  </div>\n</div>\n"
+module.exports = "<div id=\"addmanager\">\n  <!-- <p>(from add player component)</p> -->\n\n  <div class=\"col form-group\">\n    <h4>Add Player</h4>\n    <form (submit)=\"onSubmit($event)\" #form=\"ngForm\">\n      <div class=\"name\">\n        <label for=\"name\">Player Name</label>\n        <input type=\"text\" name=\"name\" class=\"form-control\" [(ngModel)]=\"name\" #playerName=\"ngModel\" minlength=\"3\" required>\n        <div class=\"warning\" *ngIf=\"playerName.dirty && !playerName.valid\">** Name must be longer than 2 characters</div>\n      </div>\n\n      <div>\n        <label for=\"position\">Preferred Position</label>\n        <select name=\"position\" [(ngModel)]=\"position\" #playerPosition=\"ngModel\" required>\n          <option value=\"\"></option>\n          <option *ngFor=\"let position of positions\" value=\"{{ position | lowercase }}\">{{ position }}</option>\n        </select>\n        <div class=\"warning\" *ngIf=\"playerPosition.dirty && !playerPosition.valid\"> ** Please choose a position</div>\n      </div>\n\n      <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"form.invalid\">Add Player</button>\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -445,7 +448,7 @@ var AddplayerComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".top {\n  margin-left: -50px;\n  margin-top: 10px;\n}\n"
 
 /***/ }),
 
@@ -456,7 +459,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n\n\n  <!-- <p>(from listplayers component)</p> -->\n  <h5 *ngIf=\"players.length <= 0\">Please add a player </h5>\n\n  <table *ngIf=\"players.length > 0\">\n\n    <thead>\n      <tr>\n        <th>Name</th>\n        <th>Position</th>\n        <th>Actions</th>\n      </tr>\n    </thead>\n\n    <tbody>\n      <tr *ngFor=\"let player of players\">\n        <td class=\"col-2\">{{ player.name }}</td>\n        <td class=\"col-2\">{{ player.position }}</td>\n        <td class=\"col-2\">\n          <button type=\"button\" (click)=\"deletePlayer(player)\">Delete</button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n\n\n\n</div>\n"
+module.exports = "<div class=\"container top\">\n\n\n  <!-- <p>(from listplayers component)</p> -->\n  <h5 *ngIf=\"players.length <= 0\">Please add a player </h5>\n\n  <table *ngIf=\"players.length > 0\" class=\"table table-hover\">\n\n    <thead class=\"thead\">\n      <tr>\n        <th>Name</th>\n        <th>Position</th>\n        <th>Actions</th>\n      </tr>\n    </thead>\n\n    <tbody>\n      <tr *ngFor=\"let player of players\">\n        <td class=\"col-2\">{{ player.name | titleize}}</td>\n        <td class=\"col-2\">{{ player.position | titleize}}</td>\n        <td class=\"col-2\">\n          <button class=\"btn btn-danger\" type=\"button\" (click)=\"deletePlayer(player)\">Delete</button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n\n\n\n</div>\n"
 
 /***/ }),
 
@@ -580,7 +583,7 @@ var PlayersService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "a {\n  margin-left: 10px;\n}\n"
 
 /***/ }),
 
@@ -591,7 +594,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"container\">\n    <div id=\"manager\">\n\n      <!-- <p>(from teammanagers component)</p> -->\n      <a [routerLink]=\"['list']\" routerLinkActive=\"active\"> List Players </a> |\n      <a [routerLink]=\"['add']\" routerLinkActive=\"active\"> Add Players </a>\n      <router-outlet></router-outlet>\n\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"container\">\n    <div id=\"manager\">\n\n      <!-- <p>(from teammanagers component)</p> -->\n      <a [routerLink]=\"['list']\" routerLinkActive=\"active\"> List Players </a>\n      <a [routerLink]=\"['add']\" routerLinkActive=\"active\"> Add Players </a>\n      <router-outlet></router-outlet>\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -630,6 +633,57 @@ var TeammanagerComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], TeammanagerComponent);
     return TeammanagerComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/titleize.pipe.ts":
+/*!**********************************!*\
+  !*** ./src/app/titleize.pipe.ts ***!
+  \**********************************/
+/*! exports provided: TitleizePipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TitleizePipe", function() { return TitleizePipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var TitleizePipe = /** @class */ (function () {
+    function TitleizePipe() {
+    }
+    TitleizePipe_1 = TitleizePipe;
+    TitleizePipe.prototype.transform = function (title, args) {
+        // console.log('in pipe', title);
+        if (typeof title !== 'string') {
+            return title;
+        }
+        var skipWords = Array.isArray(args) ? args : TitleizePipe_1.skipWords;
+        var processSkipwords = args !== false;
+        return title.replace(/\w[^-\s]*/g, function (word, index) {
+            // console.log('word is ', word, index);
+            if (processSkipwords && index && skipWords.includes(word.toLowerCase())) {
+                return word.toLowerCase();
+            }
+            return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
+        });
+    };
+    TitleizePipe.skipWords = ['of', 'the', 'an', 'a', 'in'];
+    TitleizePipe = TitleizePipe_1 = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
+            name: 'titleize'
+        })
+    ], TitleizePipe);
+    return TitleizePipe;
+    var TitleizePipe_1;
 }());
 
 
