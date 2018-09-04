@@ -17,7 +17,9 @@ export class AddplayerComponent implements OnInit {
     'first',
     'second',
     'shortstop',
-    'third'
+    'third',
+    'catcher',
+    'designatedHitter'
   ];
   // tslint:disable-next-line:no-inferrable-types
   name: string = '';

@@ -412,7 +412,9 @@ var AddplayerComponent = /** @class */ (function () {
             'first',
             'second',
             'shortstop',
-            'third'
+            'third',
+            'catcher',
+            'designatedHitter'
         ];
         // tslint:disable-next-line:no-inferrable-types
         this.name = '';
