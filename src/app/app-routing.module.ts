@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { NotfoundComponent } from './notfound/notfound.component';
 import * as TeamManager from './teammanager';
 
 const routes: Routes = [
@@ -43,6 +43,10 @@ const routes: Routes = [
         component: TeamManager.GameComponent
       }
     ]
+  },
+  {
+    path: '**',
+    component: NotfoundComponent
   }
 
 

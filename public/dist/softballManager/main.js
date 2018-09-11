@@ -35,13 +35,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _teammanager__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./teammanager */ "./src/app/teammanager/index.ts");
+/* harmony import */ var _notfound_notfound_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./notfound/notfound.component */ "./src/app/notfound/notfound.component.ts");
+/* harmony import */ var _teammanager__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./teammanager */ "./src/app/teammanager/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -53,7 +55,7 @@ var routes = [
     },
     {
         path: 'players',
-        component: _teammanager__WEBPACK_IMPORTED_MODULE_2__["TeammanagerComponent"],
+        component: _teammanager__WEBPACK_IMPORTED_MODULE_3__["TeammanagerComponent"],
         children: [
             {
                 path: '',
@@ -62,11 +64,11 @@ var routes = [
             },
             {
                 path: 'add',
-                component: _teammanager__WEBPACK_IMPORTED_MODULE_2__["AddplayerComponent"]
+                component: _teammanager__WEBPACK_IMPORTED_MODULE_3__["AddplayerComponent"]
             },
             {
                 path: 'list',
-                component: _teammanager__WEBPACK_IMPORTED_MODULE_2__["ListplayersComponent"]
+                component: _teammanager__WEBPACK_IMPORTED_MODULE_3__["ListplayersComponent"]
             }
         ]
     },
@@ -80,9 +82,13 @@ var routes = [
             },
             {
                 path: ':id',
-                component: _teammanager__WEBPACK_IMPORTED_MODULE_2__["GameComponent"]
+                component: _teammanager__WEBPACK_IMPORTED_MODULE_3__["GameComponent"]
             }
         ]
+    },
+    {
+        path: '**',
+        component: _notfound_notfound_component__WEBPACK_IMPORTED_MODULE_2__["NotfoundComponent"]
     }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -181,12 +187,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _teammanager_players_listplayers_listplayers_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./teammanager/players/listplayers/listplayers.component */ "./src/app/teammanager/players/listplayers/listplayers.component.ts");
 /* harmony import */ var _teammanager_services_team_players_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./teammanager/services/team/players.service */ "./src/app/teammanager/services/team/players.service.ts");
 /* harmony import */ var _titleize_pipe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./titleize.pipe */ "./src/app/titleize.pipe.ts");
+/* harmony import */ var _notfound_notfound_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./notfound/notfound.component */ "./src/app/notfound/notfound.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -210,7 +218,8 @@ var AppModule = /** @class */ (function () {
                 _teammanager_games_game_game_component__WEBPACK_IMPORTED_MODULE_7__["GameComponent"],
                 _teammanager_players_addplayer_addplayer_component__WEBPACK_IMPORTED_MODULE_8__["AddplayerComponent"],
                 _teammanager_players_listplayers_listplayers_component__WEBPACK_IMPORTED_MODULE_9__["ListplayersComponent"],
-                _titleize_pipe__WEBPACK_IMPORTED_MODULE_11__["TitleizePipe"]
+                _titleize_pipe__WEBPACK_IMPORTED_MODULE_11__["TitleizePipe"],
+                _notfound_notfound_component__WEBPACK_IMPORTED_MODULE_12__["NotfoundComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -223,6 +232,63 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/notfound/notfound.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/notfound/notfound.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/notfound/notfound.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/notfound/notfound.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h1>' Error 404 page not found'</h1>\n<p>page not found</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/notfound/notfound.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/notfound/notfound.component.ts ***!
+  \************************************************/
+/*! exports provided: NotfoundComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotfoundComponent", function() { return NotfoundComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var NotfoundComponent = /** @class */ (function () {
+    function NotfoundComponent() {
+    }
+    NotfoundComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-notfound',
+            template: __webpack_require__(/*! ./notfound.component.html */ "./src/app/notfound/notfound.component.html"),
+            styles: [__webpack_require__(/*! ./notfound.component.css */ "./src/app/notfound/notfound.component.css")]
+        })
+    ], NotfoundComponent);
+    return NotfoundComponent;
 }());
 
 
